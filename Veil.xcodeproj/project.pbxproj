@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* VeilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000001 /* VeilApp.swift */; };
+		A10000000000000000000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* AppDelegate.swift */; };
+		A10000000000000000000003 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* MenuBarController.swift */; };
+		A10000000000000000000004 /* ScreenshotWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000004 /* ScreenshotWatcher.swift */; };
+		A10000000000000000000006 /* EditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000006 /* EditorWindowController.swift */; };
+		A10000000000000000000007 /* EditorCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000007 /* EditorCanvasView.swift */; };
+		A10000000000000000000008 /* MaskBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000008 /* MaskBuffer.swift */; };
+		A10000000000000000000009 /* SoftMaskProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000009 /* SoftMaskProcessor.swift */; };
+		A1000000000000000000000A /* WarpRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000A /* WarpRenderer.swift */; };
+		A1000000000000000000000B /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000B /* ImageExporter.swift */; };
+		A1000000000000000000000E /* ShaderSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000010 /* ShaderSource.swift */; };
+		A1000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B10000000000000000000001 /* VeilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeilApp.swift; sourceTree = "<group>"; };
+		B10000000000000000000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B10000000000000000000003 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		B10000000000000000000004 /* ScreenshotWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotWatcher.swift; sourceTree = "<group>"; };
+		B10000000000000000000006 /* EditorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
+		B10000000000000000000007 /* EditorCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCanvasView.swift; sourceTree = "<group>"; };
+		B10000000000000000000008 /* MaskBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskBuffer.swift; sourceTree = "<group>"; };
+		B10000000000000000000009 /* SoftMaskProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftMaskProcessor.swift; sourceTree = "<group>"; };
+		B1000000000000000000000A /* WarpRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarpRenderer.swift; sourceTree = "<group>"; };
+		B1000000000000000000000B /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
+		B10000000000000000000010 /* ShaderSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderSource.swift; sourceTree = "<group>"; };
+		B1000000000000000000000D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1000000000000000000000E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1000000000000000000000F /* Veil.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Veil.entitlements; sourceTree = "<group>"; };
+		C10000000000000000000001 /* Veil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veil.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D10000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E10000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				E10000000000000000000002 /* Veil */,
+				E10000000000000000000009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E10000000000000000000002 /* Veil */ = {
+			isa = PBXGroup;
+			children = (
+				E10000000000000000000003 /* App */,
+				E10000000000000000000004 /* Capture */,
+				E10000000000000000000005 /* Editor */,
+				E10000000000000000000006 /* Mask */,
+				E10000000000000000000007 /* Warp */,
+				E10000000000000000000008 /* Export */,
+				E1000000000000000000000A /* Resources */,
+			);
+			path = Veil;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000001 /* VeilApp.swift */,
+				B10000000000000000000002 /* AppDelegate.swift */,
+				B10000000000000000000003 /* MenuBarController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000004 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000004 /* ScreenshotWatcher.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000005 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000006 /* EditorWindowController.swift */,
+				B10000000000000000000007 /* EditorCanvasView.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000006 /* Mask */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000008 /* MaskBuffer.swift */,
+				B10000000000000000000009 /* SoftMaskProcessor.swift */,
+			);
+			path = Mask;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000007 /* Warp */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000000000000000000A /* WarpRenderer.swift */,
+				B10000000000000000000010 /* ShaderSource.swift */,
+			);
+			path = Warp;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000008 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000000000000000000B /* ImageExporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000001 /* Veil.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1000000000000000000000A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000000000000000000D /* Assets.xcassets */,
+				B1000000000000000000000E /* Info.plist */,
+				B1000000000000000000000F /* Veil.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F10000000000000000000001 /* Veil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F10000000000000000000004 /* Build configuration list for PBXNativeTarget "Veil" */;
+			buildPhases = (
+				F10000000000000000000002 /* Sources */,
+				D10000000000000000000001 /* Frameworks */,
+				F10000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Veil;
+			productName = Veil;
+			productReference = C10000000000000000000001 /* Veil.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F10000000000000000000005 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					F10000000000000000000001 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = F10000000000000000000006 /* Build configuration list for PBXProject "Veil" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E10000000000000000000001;
+			productRefGroup = E10000000000000000000009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F10000000000000000000001 /* Veil */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F10000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000000000000000000D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F10000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* VeilApp.swift in Sources */,
+				A10000000000000000000002 /* AppDelegate.swift in Sources */,
+				A10000000000000000000003 /* MenuBarController.swift in Sources */,
+				A10000000000000000000004 /* ScreenshotWatcher.swift in Sources */,
+				A10000000000000000000006 /* EditorWindowController.swift in Sources */,
+				A10000000000000000000007 /* EditorCanvasView.swift in Sources */,
+				A10000000000000000000008 /* MaskBuffer.swift in Sources */,
+				A10000000000000000000009 /* SoftMaskProcessor.swift in Sources */,
+				A1000000000000000000000A /* WarpRenderer.swift in Sources */,
+				A1000000000000000000000E /* ShaderSource.swift in Sources */,
+				A1000000000000000000000B /* ImageExporter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F10000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F10000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F10000000000000000000009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Veil/Resources/Veil.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Veil/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.veil.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				CODE_SIGN_IDENTITY = "-";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F1000000000000000000000A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Veil/Resources/Veil.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Veil/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.veil.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				CODE_SIGN_IDENTITY = "-";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F10000000000000000000004 /* Build configuration list for PBXNativeTarget "Veil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10000000000000000000009 /* Debug */,
+				F1000000000000000000000A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F10000000000000000000006 /* Build configuration list for PBXProject "Veil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10000000000000000000007 /* Debug */,
+				F10000000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F10000000000000000000005 /* Project object */;
+}
