@@ -17,8 +17,8 @@
 		A10000000000000000000009 /* SoftMaskProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000009 /* SoftMaskProcessor.swift */; };
 		A1000000000000000000000A /* WarpRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000A /* WarpRenderer.swift */; };
 		A1000000000000000000000B /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000B /* ImageExporter.swift */; };
-		A1000000000000000000000E /* ShaderSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000010 /* ShaderSource.swift */; };
 		A1000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* Assets.xcassets */; };
+		A1000000000000000000000E /* ShaderSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000010 /* ShaderSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +32,10 @@
 		B10000000000000000000009 /* SoftMaskProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftMaskProcessor.swift; sourceTree = "<group>"; };
 		B1000000000000000000000A /* WarpRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarpRenderer.swift; sourceTree = "<group>"; };
 		B1000000000000000000000B /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
-		B10000000000000000000010 /* ShaderSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderSource.swift; sourceTree = "<group>"; };
 		B1000000000000000000000D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1000000000000000000000E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1000000000000000000000F /* Veil.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Veil.entitlements; sourceTree = "<group>"; };
+		B10000000000000000000010 /* ShaderSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderSource.swift; sourceTree = "<group>"; };
 		C10000000000000000000001 /* Veil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,6 +270,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Q66Z3Q7CJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Veil/Resources/Info.plist;
@@ -279,9 +280,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.veil.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zehaolu.veil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				CODE_SIGN_IDENTITY = "-";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -295,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Q66Z3Q7CJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Veil/Resources/Info.plist;
@@ -304,9 +305,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.veil.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zehaolu.veil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				CODE_SIGN_IDENTITY = "-";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};

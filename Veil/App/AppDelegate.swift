@@ -31,7 +31,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                         self?.presentEditor(with: image, sourceURL: url)
                     }
                 }
-                watcher.start()
+                if watcher.restoreBookmarkedFolder() {
+                    watcher.start()
+                } else {
+                    watcher.requestFolderAccess { granted in
+                        if granted { watcher.start() }
+                    }
+                }
                 screenshotWatcher = watcher
             }
         } else {

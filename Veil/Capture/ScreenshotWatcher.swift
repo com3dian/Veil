@@ -1,21 +1,77 @@
 import Foundation
+import AppKit
 
-/// Watches the macOS Screenshots folder (Desktop by default) for new screenshot files.
+/// Watches user-granted screenshot directories for new screenshot files.
+/// Under App Sandbox the user must explicitly grant folder access via an open panel;
+/// we persist that grant as a security-scoped bookmark.
 final class ScreenshotWatcher {
     private var stream: FSEventStreamRef?
     private let onScreenshot: (URL) -> Void
     private var knownPaths = Set<String>()
     private let queue = DispatchQueue(label: "com.veil.screenshot-watcher")
     private var startedAt = Date()
+    private var watchedURL: URL?
+
+    private static let bookmarkKey = "ScreenshotFolderBookmark"
 
     init(onScreenshot: @escaping (URL) -> Void) {
         self.onScreenshot = onScreenshot
     }
 
+    /// Attempts to restore a previously bookmarked folder. Returns true if successful.
+    func restoreBookmarkedFolder() -> Bool {
+        guard let data = UserDefaults.standard.data(forKey: Self.bookmarkKey) else { return false }
+        var isStale = false
+        guard let url = try? URL(
+            resolvingBookmarkData: data,
+            options: .withSecurityScope,
+            relativeTo: nil,
+            bookmarkDataIsStale: &isStale
+        ) else { return false }
+
+        if isStale {
+            saveBookmark(for: url)
+        }
+
+        guard url.startAccessingSecurityScopedResource() else { return false }
+        watchedURL = url
+        return true
+    }
+
+    /// Presents an open panel so the user can grant access to their screenshot folder.
+    func requestFolderAccess(completion: @escaping (Bool) -> Void) {
+        let panel = NSOpenPanel()
+        panel.message = "Select the folder where macOS saves screenshots (usually Desktop)."
+        panel.prompt = "Grant Access"
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+
+        if let desktop = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first {
+            panel.directoryURL = desktop
+        }
+
+        panel.begin { [weak self] response in
+            guard response == .OK, let url = panel.url, let self else {
+                completion(false)
+                return
+            }
+            self.saveBookmark(for: url)
+            guard url.startAccessingSecurityScopedResource() else {
+                completion(false)
+                return
+            }
+            self.watchedURL = url
+            completion(true)
+        }
+    }
+
     func start() {
         stop()
+        guard let dir = watchedURL else { return }
+
         startedAt = Date()
-        knownPaths = Set(existingScreenshotPaths())
+        knownPaths = Set(existingScreenshotPaths(in: dir))
 
         var context = FSEventStreamContext(
             version: 0,
@@ -25,7 +81,7 @@ final class ScreenshotWatcher {
             copyDescription: nil
         )
 
-        let paths = screenshotDirectories() as CFArray
+        let paths = [dir.path] as CFArray
         let flags = FSEventStreamCreateFlags(
             kFSEventStreamCreateFlagUseCFTypes
                 | kFSEventStreamCreateFlagFileEvents
@@ -70,21 +126,31 @@ final class ScreenshotWatcher {
 
     deinit {
         stop()
+        watchedURL?.stopAccessingSecurityScopedResource()
+    }
+
+    // MARK: - Private
+
+    private func saveBookmark(for url: URL) {
+        if let data = try? url.bookmarkData(
+            options: .withSecurityScope,
+            includingResourceValuesForKeys: nil,
+            relativeTo: nil
+        ) {
+            UserDefaults.standard.set(data, forKey: Self.bookmarkKey)
+        }
     }
 
     private func handlePath(_ path: String) {
         let url = URL(fileURLWithPath: path)
         guard isScreenshotFile(url) else { return }
-        // Debounce duplicates and ignore files that already existed at launch.
         if knownPaths.contains(path) { return }
         knownPaths.insert(path)
 
-        // Wait briefly so the screenshot write finishes.
         queue.asyncAfter(deadline: .now() + 0.25) { [weak self] in
             guard let self else { return }
             var isDir: ObjCBool = false
             guard FileManager.default.fileExists(atPath: path, isDirectory: &isDir), !isDir.boolValue else { return }
-            // Ignore ancient files that somehow re-fire.
             if let values = try? url.resourceValues(forKeys: [.creationDateKey]),
                let created = values.creationDate,
                created < self.startedAt.addingTimeInterval(-2) {
@@ -94,27 +160,11 @@ final class ScreenshotWatcher {
         }
     }
 
-    private func screenshotDirectories() -> [String] {
-        var dirs: [String] = []
-        let desktop = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first
-        if let desktop {
-            dirs.append(desktop.path)
-        }
-        // Respect macOS "Save screenshots to" location when available.
-        if let custom = UserDefaults(suiteName: "com.apple.screencapture")?.string(forKey: "location"),
-           !custom.isEmpty {
-            dirs.append((custom as NSString).expandingTildeInPath)
-        }
-        return Array(Set(dirs))
-    }
-
-    private func existingScreenshotPaths() -> [String] {
-        screenshotDirectories().flatMap { dir -> [String] in
-            guard let files = try? FileManager.default.contentsOfDirectory(atPath: dir) else { return [] }
-            return files.compactMap { name in
-                let path = (dir as NSString).appendingPathComponent(name)
-                return isScreenshotFile(URL(fileURLWithPath: path)) ? path : nil
-            }
+    private func existingScreenshotPaths(in dir: URL) -> [String] {
+        guard let files = try? FileManager.default.contentsOfDirectory(atPath: dir.path) else { return [] }
+        return files.compactMap { name in
+            let path = dir.appendingPathComponent(name).path
+            return isScreenshotFile(URL(fileURLWithPath: path)) ? path : nil
         }
     }
 
@@ -122,13 +172,12 @@ final class ScreenshotWatcher {
         let name = url.lastPathComponent
         let ext = url.pathExtension.lowercased()
         guard ["png", "jpg", "jpeg", "heic", "tif", "tiff"].contains(ext) else { return false }
-        // English + localized common prefixes; also accept Screen Recording stills are out of scope.
         let lowered = name.lowercased()
         return lowered.hasPrefix("screen shot")
             || lowered.hasPrefix("screenshot")
             || lowered.hasPrefix("屏幕快照")
             || lowered.hasPrefix("スクリーンショット")
-            || name.hasPrefix("Capture d’écran")
+            || name.hasPrefix("Capture d'écran")
             || name.hasPrefix("Captura de pantalla")
     }
 }
